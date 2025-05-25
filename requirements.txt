@@ -1,0 +1,15 @@
+certifi==2025.1.31
+charset-normalizer==3.4.1
+idna==3.10
+psycopg2-binary==2.9.10
+pyaes==1.6.1
+pybit==5.10.1
+pycryptodome==3.22.0
+pydantic_core==2.34.1
+Pyrogram==2.0.106
+PySocks==1.7.1
+requests==2.32.3
+TgCrypto-pyrofork==1.2.7
+typing_extensions==4.13.2
+urllib3==2.4.0
+websocket-client==1.8.0
