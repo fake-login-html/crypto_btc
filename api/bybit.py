@@ -1,5 +1,5 @@
 import time
-from config import *
+from api.config import *
 
 from pybit.unified_trading import HTTP
 
