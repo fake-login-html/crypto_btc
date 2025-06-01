@@ -95,6 +95,14 @@ class DataBase:
         self.conn.close()  # закрываем соединение
         return signal
 
+    def statistics(self):
+        # выполняем запрос
+        self.cursor.execute(f"SELECT procent, moneta, use, prognoz FROM public.signal")
+        statistic = self.cursor.fetchall()
+        self.cursor.close()  # закрываем курсор
+        self.conn.close()  # закрываем соединение
+        return statistic
+
 ######################## для отката стратегий ######################################
 
     # ДОБАВЛЯЕМ КУРСЫ ВАЛЮТ В БД
