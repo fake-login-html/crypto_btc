@@ -161,10 +161,13 @@ def btc_bybit(qty_buy, price_shell):  # para=ВАЛЮТНАЯ ПАРА, qty_buy=
     qty_shell = BitGetApi().inf_order(order_buy)
 
     # оставляем 6 символов после запятой или оставляем как есть
-    qty_shell = str(float(qty_shell) - (float(qty_shell) / 1000))
-    qty_shell = qty_shell.split('.')
-    if len(qty_shell) == 2: qty_shell = qty_shell[0] + '.' + qty_shell[1][:6]
-    else: qty_shell = qty_shell[0]
+    qty_shell = round(float(qty_shell), 6)
+    price_shell = round(price_shell, 1)
+
+    #qty_shell = str(float(qty_shell) - (float(qty_shell) / 1000))
+    #qty_shell = qty_shell.split('.')
+    #if len(qty_shell) == 2: qty_shell = qty_shell[0] + '.' + qty_shell[1][:6]
+    #else: qty_shell = qty_shell[0]
 
     # ставим ордер на продажу
     order_id = BitGetApi().shell_limit(qty=qty_shell, price_shell=price_shell, para=para)
@@ -175,7 +178,7 @@ def btc_bybit(qty_buy, price_shell):  # para=ВАЛЮТНАЯ ПАРА, qty_buy=
 # btc_bybit(10000, 99000)
 # BitGetApi().shell_limit(qty=0.0001, price_shell=99000, para='BTCUSDT')
 
-# btc_bybit(qty_buy=100, price_shell=95000)
+#btc_bybit(qty_buy=100, price_shell=108000)
 # BitGetApi().shell(para='BTCUSDT',qty=0.001070)
 
 
