@@ -57,6 +57,16 @@ class DataBase:
         self.conn.close()  # закрываем соединение
         return price
 
+    def price_check_3day(self):
+        # минус два дня от отекущего времени
+        dm = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d %H:%M:%S")
+        # выполняем запрос
+        self.cursor.execute(f"SELECT max(price) FROM price where date > '{dm}' and moneta = 'BTC';")
+        price = self.cursor.fetchall()
+        self.cursor.close()  # закрываем курсор
+        self.conn.close()  # закрываем соединение
+        return price
+
     def price_check_2_8(self):
         # минус два дня от отекущего времени
         dm = (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d %H:%M:%S")
@@ -70,6 +80,16 @@ class DataBase:
     def signal_check(self):
         # вычитаем из текущей даты 2 дня
         dm = (datetime.now() - timedelta(days=2)).strftime("%Y-%m-%d %H:%M:%S")
+        # выполняем запрос
+        self.cursor.execute(f"SELECT * FROM public.signal where date > '{dm}' and use = false and procent = {2} and moneta = 'BTC' ORDER by date desc LIMIT 1;")
+        signal = self.cursor.fetchall()
+        self.cursor.close()  # закрываем курсор
+        self.conn.close()  # закрываем соединение
+        return signal
+
+    def signal_check_3day(self):
+        # вычитаем из текущей даты 3 дня
+        dm = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d %H:%M:%S")
         # выполняем запрос
         self.cursor.execute(f"SELECT * FROM public.signal where date > '{dm}' and use = false and procent = {2} and moneta = 'BTC' ORDER by date desc LIMIT 1;")
         signal = self.cursor.fetchall()

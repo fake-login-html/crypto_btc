@@ -108,6 +108,7 @@ class BitGetApi:
                                     )['result']['list'][0]['lastPrice']
         return price
 
+    # колличесвто ордеров
     def coll_orders(self):
         vse_ordera = BitGetApi().orders()['result']['list']
         cl_orders = len(vse_ordera)
