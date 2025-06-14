@@ -81,7 +81,7 @@ class Crypto:
             signal_db = signal[0][2] #[0][3] 15.11.2024
             # если оно больше 4 процентов, записываем его в бд
             proc = round(100 - ((last_price / signal_db) * 100), 2)
-            print('Разница от крайнего синала за 2 дня', round(proc, 2))
+            print('Разница от крайнего синала за 3 дня', round(proc, 2))
             if proc >= 4 and coll_orders < 10:  # 4:
                 Crypto().SignalBd(last_price, proc)
 
