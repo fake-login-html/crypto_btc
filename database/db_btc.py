@@ -91,7 +91,7 @@ class DataBase:
         # вычитаем из текущей даты 3 дня
         dm = (datetime.now() - timedelta(days=3)).strftime("%Y-%m-%d %H:%M:%S")
         # выполняем запрос
-        self.cursor.execute(f"SELECT * FROM public.signal where date > '{dm}' and use = false and procent = {2} and moneta = 'BTC' ORDER by date desc LIMIT 1;")
+        self.cursor.execute(f"SELECT * FROM public.signal where date > '{dm}' and use = false and procent = {2} and moneta = 'BTC_3day' ORDER by date desc LIMIT 1;")
         signal = self.cursor.fetchall()
         self.cursor.close()  # закрываем курсор
         self.conn.close()  # закрываем соединение
